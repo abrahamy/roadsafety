@@ -1,0 +1,3 @@
+graft roadsafety/static
+graft roadsafety/templates
+global-exclude *.pyc
