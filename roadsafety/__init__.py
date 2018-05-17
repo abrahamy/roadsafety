@@ -20,13 +20,14 @@ def create_app(test_config=None):
         pass
 
     from roadsafety.models import db
-    from roadsafety.blueprints import api, views
+    from roadsafety.blueprints import api, auth, site
 
     db.init_app(app)
     db.create_all(app=app)
 
     app.register_blueprint(api.blueprint)
-    app.register_blueprint(views.blueprint)
+    app.register_blueprint(auth.blueprint)
+    app.register_blueprint(site.blueprint)
 
     return app
 
