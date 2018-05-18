@@ -1,5 +1,4 @@
 from flask import Blueprint
-from roadsafety.models import db, User
 from roadsafety.blueprints.auth import login_required
 
 
