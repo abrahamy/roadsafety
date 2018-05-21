@@ -36,3 +36,12 @@ class Message(IdMixin, TimestampMixin, db.Model):
     reply = sa.Column(sa.String, nullable=True)
 
     session = sa.orm.relationship('Session')
+
+
+class TrafficReport(IdMixin, TimestampMixin, db.Model):
+    location = sa.Column(sa.String, nullable=False,
+                         doc='location about which traffic report is being made')
+    status = sa.Column(sa.String, nullable=False,
+                       doc='traffic situation at location')
+    reported_by = sa.Column(sa.String, nullable=False,
+                            doc='phone number of person making the report')

@@ -1,5 +1,5 @@
 from flask import Blueprint
-from flask_restplus import Api, fields, Resource
+from flask_restplus import abort, Api, fields, Resource
 import roadsafety.logic as logic
 
 
@@ -24,6 +24,11 @@ ussd = api.model('USSD', {
 })
 
 
+@api.errorhandler(logic.ParseError)
+def handle_parse_error(parse_error):
+    abort(400)
+
+
 @ns.route('/')
 class USSD(Resource):
     '''@see http://docs.africastalking.com/ussd'''
@@ -33,7 +38,7 @@ class USSD(Resource):
     def post(self):
         '''USSD callback'''
         # get the required response message
-        reply = logic.parse_and_reply(api.payload['text'])
+        reply = logic.parse_and_reply(api.payload)
 
         # log ussd message in the database
         logic.record(api.payload, reply)
