@@ -13,7 +13,7 @@ setup(
         'googlemaps==2.5.1',
         'python-dotenv==0.8.2',
         'Authlib==0.7',
-        'requests==2.18.4',
+        'requests==2.20.0',
         'six==1.11.0',
         'WTForms==2.1',
     ],
